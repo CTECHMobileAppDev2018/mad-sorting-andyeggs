@@ -2,11 +2,28 @@ import java.util.Arrays;
 
 class Main 
 { 
+  public void arraySwap(double[] inputArray, int loc1, int loc2) {
+    try {
+      double temp = inputArray[loc1];
+      inputArray[loc1] = inputArray[loc2];
+      inputArray[loc2] = temp;
+    } catch (ArrayIndexOutOfBoundsException e) {
+      System.out.println("Error! arraySwapAny2: Swap locations invalid.");
+      return;
+    }
+  }
 
-    // start and end are optional - some sorting algorithms use them, but you can ignore them
-    void sort(double arr[], long start, long end) 
+    void sort(double arr[], long start, long end) //Gnome Sort
     { 
-      // sort the array here
+      int ix = 0; //index#
+      while (ix < arr.length) {
+        if (ix == 0) ix++;
+        if (arr[ix] >= arr[ix -1]) ix++;
+        else {
+          arraySwap(arr, ix, ix-1);
+          ix--;
+        }
+      }
     } 
 
   
